@@ -1,0 +1,207 @@
+/* ============================================================
+   DIAGNOSTICS — 3D Card Stack + Auto-play
+   ============================================================ */
+
+.diag-sec { background: var(--surface-2); }
+
+/* El contenedor heredado ya no es un grid */
+.diag-grid { display: block; }
+
+/* ─── Perspectiva: escenario 3D ─────────────────────────────── */
+.diag-stack-outer {
+  position: relative;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1100px;
+  perspective-origin: 50% 50%;
+  cursor: pointer;
+}
+
+/* ─── Tarjeta individual ────────────────────────────────────── */
+.diag-card-3d {
+  position: absolute;
+  width: min(420px, 90vw);
+  height: 300px;
+  border-radius: 22px;
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(
+    140deg,
+    #181818  0%,
+    #3a000e  55%,
+    #c0102a  100%
+  );
+  color: #fff;
+  cursor: pointer;
+  will-change: transform, opacity;
+  transition:
+    transform  0.55s cubic-bezier(0.34, 1.15, 0.64, 1),
+    opacity    0.42s ease,
+    box-shadow 0.42s ease;
+  box-shadow: 0 8px 40px rgba(0,0,0,.28);
+  backface-visibility: hidden;
+  user-select: none;
+}
+
+.diag-card-3d:hover {
+  box-shadow: 0 20px 60px rgba(192,16,42,.32);
+}
+
+/* ─── Sección superior: icono + categoría ───────────────────── */
+.diag-card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.diag-card-icon {
+  width: 48px; height: 48px;
+  border-radius: 13px;
+  background: rgba(255,255,255,.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.diag-card-icon svg {
+  width: 26px !important;
+  height: 26px !important;
+}
+
+.diag-card-icon svg path,
+.diag-card-icon svg circle,
+.diag-card-icon svg rect,
+.diag-card-icon svg polyline,
+.diag-card-icon svg line {
+  stroke: rgba(255,255,255,.88) !important;
+  fill: none;
+}
+
+.diag-card-icon svg circle[fill="#C0102A"],
+.diag-card-icon svg path[fill="#C0102A"] {
+  fill: rgba(255,255,255,.88) !important;
+  stroke: none !important;
+}
+
+.diag-card-cat {
+  font-family: var(--sans);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.48);
+}
+
+/* ─── Cuerpo: título + descripción larga ────────────────────── */
+.diag-card-body { flex: 1; padding-top: 14px; }
+
+.diag-card-3d h3 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  margin: 0 0 9px;
+}
+
+.diag-card-3d p {
+  font-family: var(--sans);
+  font-size: .845rem;
+  color: rgba(255,255,255,.68);
+  line-height: 1.58;
+  /* máximo 3 líneas */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Etiquetas en la parte inferior ───────────────────────── */
+.diag-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 14px;
+}
+
+.diag-tag {
+  font-family: var(--sans);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.78);
+  background: rgba(255,255,255,.13);
+  border-radius: 100px;
+  padding: 3px 11px;
+  white-space: nowrap;
+}
+
+/* ─── Barra de progreso auto-play ───────────────────────────── */
+.diag-progress-wrap {
+  width: min(420px, 90vw);
+  height: 3px;
+  background: rgba(0,0,0,.10);
+  border-radius: 3px;
+  margin: 22px auto 0;
+  overflow: hidden;
+}
+
+.diag-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--red);
+  border-radius: 3px;
+  /* la transición se aplica desde JS */
+}
+
+/* ─── Puntos de navegación ──────────────────────────────────── */
+.diag-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.diag-dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 100px;
+  background: rgba(0,0,0,.16);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, width 0.35s ease;
+}
+
+.diag-dot.active {
+  background: var(--red);
+  width: 26px;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .diag-stack-outer { height: 320px; }
+
+  .diag-card-3d {
+    height: 270px;
+    padding: 22px 20px;
+  }
+
+  .diag-card-3d h3 { font-size: 1.15rem; }
+  .diag-card-3d p  { font-size: .8rem; -webkit-line-clamp: 2; }
+  .diag-card-top   { gap: 10px; }
+
+  .diag-card-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+  }
+
+  .diag-progress-wrap { width: 90vw; }
+}

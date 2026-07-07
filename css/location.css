@@ -1,0 +1,80 @@
+/* ============================================================
+   LOCATION — ubicación y datos de contacto
+   ============================================================ */
+
+.location-sec { background: #fff; }
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ---------- Map frame ---------- */
+.location-map {
+  border-radius: 20px;
+  overflow: hidden;
+  height: 380px;
+  border: 1px solid var(--border);
+}
+
+.location-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ---------- Info column ---------- */
+.location-info {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.loc-item {
+  display: flex;
+  gap: 16px;
+}
+
+.loc-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--red-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.loc-content-title {
+  font-weight: 700;
+  font-size: .875rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.loc-content-line {
+  font-size: .875rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.loc-link {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: .8125rem;
+  color: var(--red);
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+.loc-link:hover { opacity: .75; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .location-grid { grid-template-columns: 1fr; }
+  .location-map  { height: 280px; }
+}

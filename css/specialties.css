@@ -1,0 +1,313 @@
+/* ============================================================
+   SPECIALTIES — Full-bleed video section
+   Lista izquierda + detalle derecha + video/imagen de fondo
+   ============================================================ */
+
+.spec-sec {
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+  min-height: 100vh;
+}
+
+#specGrid {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Capa de fondo ─────────────────────────────────────────── */
+.spec-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.spec-vid {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.85s ease;
+}
+
+.spec-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 0.85s ease;
+}
+
+.spec-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(4,4,4,0.90)  0%,
+    rgba(4,4,4,0.70) 42%,
+    rgba(4,4,4,0.52) 100%
+  );
+  z-index: 1;
+}
+
+/* ─── Grid de contenido ─────────────────────────────────────── */
+.spec-wrap {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 38% 62%;
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+}
+
+/* ─── Columna izquierda: lista ──────────────────────────────── */
+.spec-left {
+  padding: clamp(52px, 8vh, 96px) clamp(24px, 3.5vw, 52px) clamp(52px, 8vh, 96px) clamp(24px, max(5vw, 48px), 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+
+.spec-sec-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 44px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.spec-sec-eyebrow::before {
+  content: '';
+  display: block;
+  width: 22px; height: 1px;
+  background: var(--red);
+  flex-shrink: 0;
+}
+
+.spec-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0 12px 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  position: relative;
+}
+
+/* Barra roja en el borde izquierdo cuando está activo */
+.spec-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%) scaleY(0);
+  width: 3px;
+  height: 60%;
+  background: var(--red);
+  border-radius: 2px;
+  transition: transform 0.38s cubic-bezier(0.34, 1.2, 0.64, 1);
+  transform-origin: center;
+}
+
+.spec-item.active::before {
+  transform: translateY(-50%) scaleY(1);
+}
+
+.spec-item-num {
+  font-family: var(--serif);
+  font-size: 0.7rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.24);
+  min-width: 20px;
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+
+.spec-item.active .spec-item-num { color: var(--red); }
+
+.spec-item-name {
+  font-family: var(--sans);
+  font-size: clamp(0.875rem, 1.05vw, 1.05rem);
+  font-weight: 500;
+  color: rgba(255,255,255,0.40);
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.spec-item.active .spec-item-name {
+  color: #fff;
+  font-weight: 600;
+}
+
+.spec-item:hover:not(.active) .spec-item-name {
+  color: rgba(255,255,255,0.70);
+}
+
+.spec-item-dot {
+  margin-left: auto;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--red);
+  opacity: 0;
+  transform: scale(0);
+  flex-shrink: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.spec-item.active .spec-item-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── Columna derecha: detalle ──────────────────────────────── */
+.spec-right {
+  padding: clamp(52px, 8vh, 96px) clamp(36px, 5.5vw, 88px);
+  display: flex;
+  align-items: center;
+}
+
+.spec-detail {
+  width: 100%;
+  max-width: 540px;
+}
+
+.spec-detail-ghost {
+  font-family: var(--serif);
+  font-size: clamp(7rem, 13vw, 11rem);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255,255,255,0.04);
+  letter-spacing: -0.05em;
+  margin-bottom: -28px;
+  user-select: none;
+}
+
+.spec-detail-name {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.4vw, 3.2rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 18px;
+}
+
+.spec-detail-bar {
+  width: 44px; height: 2px;
+  background: var(--red);
+  margin-bottom: 22px;
+  border-radius: 2px;
+}
+
+.spec-detail-desc {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.66);
+  margin-bottom: 40px;
+}
+
+.spec-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #fff;
+  color: var(--ink);
+  padding: 13px 26px;
+  border-radius: var(--r-btn);
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.spec-cta svg { transition: transform 0.25s ease; flex-shrink: 0; }
+
+.spec-cta:hover {
+  background: var(--red);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.spec-cta:hover svg { transform: translateX(4px); }
+
+/* Transición del panel derecho al cambiar especialidad */
+.spec-detail-inner {
+  transition: opacity 0.32s ease, transform 0.32s ease;
+}
+
+.spec-detail-inner.exit {
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+}
+
+/* ─── Barra de progreso auto-play ───────────────────────────── */
+.spec-progress-wrap {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  z-index: 3;
+}
+
+.spec-progress-fill {
+  height: 100%;
+  background: var(--red);
+  width: 0%;
+  border-radius: 1px;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  #specGrid  { min-height: auto; }
+  .spec-sec  { min-height: auto; }
+
+  .spec-wrap {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-bottom: 64px;
+  }
+
+  .spec-left {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 88px clamp(20px,5vw,48px) 36px;
+  }
+
+  .spec-right {
+    padding: 36px clamp(20px,5vw,48px) 56px;
+    align-items: flex-start;
+  }
+
+  .spec-detail-ghost { display: none; }
+  .spec-detail-name  { font-size: clamp(1.75rem, 7vw, 2.8rem); }
+  .spec-detail-desc  { font-size: 0.9375rem; }
+}
+
+@media (max-width: 520px) {
+  .spec-item       { padding: 10px 0 10px 18px; }
+  .spec-item-name  { font-size: 0.875rem; }
+  .spec-sec-eyebrow { margin-bottom: 28px; }
+}

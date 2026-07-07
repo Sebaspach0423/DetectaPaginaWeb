@@ -1,0 +1,48 @@
+/* ============================================================
+   PROCESS — proceso de cita en 4 pasos numerados
+   ============================================================ */
+
+.proc-sec { background: linear-gradient(180deg, var(--g100), #fff); }
+
+.proc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  position: relative;
+}
+.proc-grid::before {
+  content: "";
+  position: absolute;
+  top: 38px;
+  left: 12%; right: 12%;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--g200) 0 8px, transparent 8px 16px);
+  z-index: 0;
+}
+
+.proc-step { text-align: center; position: relative; z-index: 1; padding: 0 .6rem; }
+
+.proc-num {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--red);
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 2rem;
+  margin: 0 auto 1.2rem;
+  box-shadow: 0 10px 24px -14px rgba(192,21,42,.6);
+  transition: .4s;
+}
+.proc-step:hover .proc-num { background: var(--red); color: #fff; transform: translateY(-4px); }
+
+.proc-step h3 { font-size: 1.35rem; margin-bottom: .4rem; }
+.proc-step p  { font-size: .9rem; color: var(--muted); max-width: 24ch; margin: 0 auto; }
+
+/* responsive */
+@media (max-width: 1024px) { .proc-grid { grid-template-columns: repeat(2, 1fr); } .proc-grid::before { display: none; } }
+@media (max-width: 680px)  { .proc-grid { grid-template-columns: 1fr; } }

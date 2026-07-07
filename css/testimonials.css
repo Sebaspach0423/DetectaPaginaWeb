@@ -1,0 +1,115 @@
+/* ============================================================
+   TESTIMONIALS — reseñas de pacientes, fondo oscuro
+   ============================================================ */
+
+.test-sec {
+  background: var(--dark-card);
+}
+
+/* ---------- Section head (split) ---------- */
+.test-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+  flex-wrap: wrap;
+}
+
+.test-head h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.12;
+  color: #fff;
+}
+
+.test-head h2 em {
+  font-style: italic;
+  color: #FF8899;
+}
+
+.test-head p {
+  font-size: .9375rem;
+  color: rgba(255,255,255,.42);
+  line-height: 1.75;
+  max-width: 300px;
+}
+
+/* ---------- Grid ---------- */
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ---------- Card ---------- */
+.test-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--r-card);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.test-card:hover {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(192,16,42,.30);
+}
+
+/* ---------- Quote mark ---------- */
+.test-quote {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: 12px;
+  opacity: .6;
+  user-select: none;
+}
+
+/* ---------- Text ---------- */
+.test-text {
+  font-size: .9375rem;
+  color: rgba(255,255,255,.78);
+  line-height: 1.75;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+/* ---------- Footer ---------- */
+.test-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding-top: 18px;
+}
+
+.test-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+.test-name { font-weight: 600; font-size: .875rem; color: #fff; }
+.test-spec  { font-size: .75rem; color: rgba(255,255,255,.38); margin-top: 2px; }
+
+.test-stars { color: #FFD166; font-size: .75rem; letter-spacing: 1px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .test-grid { grid-template-columns: 1fr; }
+  .test-head { flex-direction: column; align-items: flex-start; }
+  .test-head p { max-width: 100%; }
+}

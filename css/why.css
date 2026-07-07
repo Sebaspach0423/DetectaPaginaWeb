@@ -1,0 +1,102 @@
+/* ============================================================
+   WHY US — diferenciadores con numeración 01-04
+   ============================================================ */
+
+.why-sec { background: #fff; }
+
+/* ---------- Split header ---------- */
+.why-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: clamp(40px, 5vw, 64px);
+  flex-wrap: wrap;
+}
+
+.why-head-left h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.why-head-left h2 em {
+  font-style: italic;
+  color: var(--red);
+}
+
+.why-head-right {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 380px;
+}
+
+/* ---------- Grid ---------- */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ---------- Card ---------- */
+.why-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: 28px 22px;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.why-card:hover {
+  border-color: var(--red);
+  box-shadow: 0 6px 28px rgba(192,16,42,.09);
+  transform: translateY(-3px);
+}
+
+/* ---------- Number ---------- */
+.why-num {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #F0E8E8;
+  line-height: 1;
+  margin-bottom: 14px;
+  user-select: none;
+}
+
+/* ---------- Red bar ---------- */
+.why-bar {
+  width: 28px; height: 3px;
+  background: var(--red);
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+
+/* ---------- Content ---------- */
+.why-card h3 {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.why-card p {
+  font-size: .875rem;
+  color: #777;
+  line-height: 1.72;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .why-head { flex-direction: column; }
+  .why-head-right { max-width: 100%; }
+}

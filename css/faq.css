@@ -1,0 +1,53 @@
+/* ============================================================
+   FAQ — acordeón de preguntas frecuentes
+   ============================================================ */
+
+.faq-sec { background: #fff; }
+
+.faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: .8rem; }
+
+.faq-item {
+  border: 1px solid var(--g200);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color .3s, box-shadow .3s;
+}
+.faq-item.open { border-color: var(--red); box-shadow: var(--shadow-soft); }
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  padding: 1.35rem 1.6rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.faq-q .plus {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--g100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .4s;
+  position: relative;
+}
+.faq-item.open .faq-q .plus { background: var(--red); transform: rotate(135deg); }
+
+.faq-q .plus::before,
+.faq-q .plus::after { content: ""; position: absolute; background: var(--ink); transition: .3s; }
+.faq-q .plus::before { width: 13px; height: 2px; }
+.faq-q .plus::after  { height: 13px; width: 2px; }
+.faq-item.open .faq-q .plus::before,
+.faq-item.open .faq-q .plus::after { background: #fff; }
+
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
+.faq-a p { padding: 0 1.6rem 1.4rem; color: var(--muted); font-size: .96rem; }

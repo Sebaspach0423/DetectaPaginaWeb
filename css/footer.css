@@ -1,0 +1,142 @@
+/* ============================================================
+   FOOTER — pie de página oscuro, 4 columnas
+   ============================================================ */
+
+.footer {
+  background: var(--dark-bg);
+  padding: 60px 0 24px;
+  color: #fff;
+}
+
+/* ---------- Grid ---------- */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+/* ---------- Brand column ---------- */
+.footer-brand {}
+
+.footer-logo-wrap {
+  display: inline-block;
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 14px;
+  margin-bottom: 18px;
+}
+
+.footer-logo-wrap img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-tagline {
+  font-size: .875rem;
+  color: rgba(255,255,255,.46);
+  line-height: 1.75;
+  max-width: 250px;
+  margin-bottom: 24px;
+}
+
+/* ---------- Social icons ---------- */
+.footer-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.6);
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.footer-social:hover {
+  background: rgba(192,16,42,.5);
+  color: #fff;
+  border-color: rgba(192,16,42,.6);
+}
+
+/* ---------- Column headings ---------- */
+.footer-col-title {
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.28);
+  margin-bottom: 20px;
+}
+
+/* ---------- Nav / Specialties links ---------- */
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  font-size: .875rem;
+  color: rgba(255,255,255,.56);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.footer-links a:hover { color: #FF8899; }
+
+/* ---------- Contact items ---------- */
+.footer-contact-item {
+  margin-bottom: 18px;
+}
+
+.footer-contact-label {
+  font-size: .625rem;
+  color: rgba(255,255,255,.26);
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.footer-contact-val {
+  font-size: .875rem;
+  color: rgba(255,255,255,.60);
+  text-decoration: none;
+  transition: color var(--transition);
+  display: block;
+}
+
+a.footer-contact-val:hover { color: #fff; }
+
+/* ---------- Bottom bar ---------- */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-copy,
+.footer-loc {
+  font-size: .8125rem;
+  color: rgba(255,255,255,.26);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
