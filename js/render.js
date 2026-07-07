@@ -33,6 +33,7 @@ function renderSpecialties() {
     '<div class="spec-bg">'
   +   '<video class="spec-vid" id="sVidA" muted loop playsinline preload="auto"></video>'
   +   '<video class="spec-vid" id="sVidB" muted loop playsinline preload="auto"></video>'
+  +   '<video id="sPreload" muted preload="auto" style="display:none"></video>'
   +   '<img  class="spec-fallback" id="sFallback" alt="">'
   +   '<div class="spec-overlay"></div>'
   + '</div>'
@@ -65,38 +66,63 @@ function renderSpecialties() {
   + '<div class="spec-progress-wrap"><div class="spec-progress-fill" id="sProgress"></div></div>';
 
   /* ── Referencias DOM ── */
-  var items     = wrap.querySelectorAll('.spec-item');
-  var vidA      = document.getElementById('sVidA');
-  var vidB      = document.getElementById('sVidB');
-  var fallback  = document.getElementById('sFallback');
-  var ghost     = document.getElementById('sGhost');
-  var nameEl    = document.getElementById('sName');
-  var descEl    = document.getElementById('sDesc');
-  var detail    = document.getElementById('sDetailInner');
-  var progFill  = document.getElementById('sProgress');
-  var VIDS      = [vidA, vidB];
+  var items      = wrap.querySelectorAll('.spec-item');
+  var vidA       = document.getElementById('sVidA');
+  var vidB       = document.getElementById('sVidB');
+  var preloadVid = document.getElementById('sPreload');
+  var fallback   = document.getElementById('sFallback');
+  var ghost      = document.getElementById('sGhost');
+  var nameEl     = document.getElementById('sName');
+  var descEl     = document.getElementById('sDesc');
+  var detail     = document.getElementById('sDetailInner');
+  var progFill   = document.getElementById('sProgress');
+  var VIDS       = [vidA, vidB];
+  var switchToken = 0; /* descarta callbacks tardíos de un switchBg anterior */
 
-  /* ── Cambia el fondo (video o imagen) ── */
-  function switchBg(spec) {
+  /* ── Precarga en segundo plano el video de la siguiente especialidad,
+       para que ya tenga buffer cuando le toque mostrarse ── */
+  function preload(src) {
+    if (!preloadVid || preloadVid.getAttribute('src') === src) return;
+    preloadVid.src = src;
+    preloadVid.load();
+  }
+
+  /* ── Cambia el fondo (video o imagen).
+       onReady se dispara cuando ya hay algo visible en pantalla
+       (video reproduciendo o imagen de respaldo), no antes. ── */
+  function switchBg(spec, onReady) {
+    var myToken = ++switchToken;
+
     if (spec.video) {
       var nextSlot = 1 - curSlot;
       var nextVid  = VIDS[nextSlot];
       var prevVid  = VIDS[curSlot];
+      var revealed = false;
+
+      function reveal() {
+        if (revealed || myToken !== switchToken) return;
+        revealed = true;
+        nextVid.style.opacity  = '1';
+        prevVid.style.opacity  = '0';
+        fallback.style.opacity = '0';
+        curSlot = nextSlot;
+        onReady();
+      }
 
       nextVid.src = spec.video;
       nextVid.load();
-      nextVid.play().catch(function() {});
+      nextVid.play().then(reveal).catch(reveal);
 
-      nextVid.style.opacity  = '1';
-      prevVid.style.opacity  = '0';
-      fallback.style.opacity = '0';
-      curSlot = nextSlot;
+      /* Si la conexión es muy lenta y play() nunca resuelve, no dejar
+         la sección congelada: revela igual pasado un tiempo prudente. */
+      setTimeout(reveal, 8000);
     } else {
       /* Sin video: muestra la imagen de fallback */
       fallback.src           = spec.img;
       fallback.style.opacity = '1';
       vidA.style.opacity     = '0';
       vidB.style.opacity     = '0';
+      onReady();
     }
   }
 
@@ -120,9 +146,21 @@ function renderSpecialties() {
     items.forEach(function(el) { el.classList.remove('active'); });
     items[idx].classList.add('active');
 
-    switchBg(spec);
+    /* Detiene cualquier avance pendiente mientras el nuevo video carga,
+       para no abortar su descarga a mitad de camino. */
+    clearTimeout(autoTimer);
+    if (progFill) {
+      progFill.style.transition = 'none';
+      progFill.style.width      = '0%';
+    }
+
+    switchBg(spec, function() {
+      scheduleNext();
+    });
     updateContent(spec, idx);
-    startProgress();
+
+    /* Adelanta la descarga del siguiente video mientras se ve este. */
+    preload(specialties[(idx + 1) % specialties.length].video);
   }
 
   /* ── Barra de progreso ── */
@@ -135,10 +173,11 @@ function renderSpecialties() {
     progFill.style.width      = '100%';
   }
 
-  /* ── Auto-avance circular ── */
-  function startAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(function() {
+  /* ── Programa el siguiente avance a partir de que el video actual
+       ya esté visible/reproduciendo (no desde que se pidió el cambio) ── */
+  function scheduleNext() {
+    clearTimeout(autoTimer);
+    autoTimer = setTimeout(function() {
       activate((activeIndex + 1) % specialties.length);
     }, AUTO_MS);
     startProgress();
@@ -148,13 +187,11 @@ function renderSpecialties() {
   items.forEach(function(el) {
     el.addEventListener('click', function() {
       activate(+el.dataset.idx);
-      startAuto(); /* reinicia el timer tras click manual */
     });
   });
 
   /* ── Arranque inicial ── */
   activate(0);
-  startAuto();
 }
 
 /* ---------- Diagnostics — 3D Card Stack + Auto-play ---------- */
