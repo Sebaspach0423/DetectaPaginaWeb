@@ -31,8 +31,8 @@ function renderSpecialties() {
   wrap.innerHTML =
     /* Fondo */
     '<div class="spec-bg">'
-  +   '<video class="spec-vid" id="sVidA" muted loop playsinline></video>'
-  +   '<video class="spec-vid" id="sVidB" muted loop playsinline></video>'
+  +   '<video class="spec-vid" id="sVidA" muted loop playsinline preload="auto"></video>'
+  +   '<video class="spec-vid" id="sVidB" muted loop playsinline preload="auto"></video>'
   +   '<img  class="spec-fallback" id="sFallback" alt="">'
   +   '<div class="spec-overlay"></div>'
   + '</div>'
