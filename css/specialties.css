@@ -284,6 +284,18 @@
   #specGrid  { min-height: auto; }
   .spec-sec  { min-height: auto; }
 
+  /* En layout apilado el gradiente diagonal (pensado para split desktop)
+     deja el texto sobre zonas demasiado claras del video/imagen de fondo;
+     aquí se refuerza a un scrim vertical uniforme para mantener contraste. */
+  .spec-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(4,4,4,0.88) 0%,
+      rgba(4,4,4,0.80) 45%,
+      rgba(4,4,4,0.92) 100%
+    );
+  }
+
   .spec-wrap {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -293,21 +305,37 @@
   .spec-left {
     border-right: none;
     border-bottom: 1px solid rgba(255,255,255,0.07);
-    padding: 88px clamp(20px,5vw,48px) 36px;
+    padding: clamp(72px, 14vw, 88px) clamp(20px,5vw,48px) 36px;
   }
 
   .spec-right {
-    padding: 36px clamp(20px,5vw,48px) 56px;
+    padding: 36px clamp(20px,5vw,48px) 88px;
     align-items: flex-start;
   }
 
   .spec-detail-ghost { display: none; }
   .spec-detail-name  { font-size: clamp(1.75rem, 7vw, 2.8rem); }
   .spec-detail-desc  { font-size: 0.9375rem; }
+
+  /* Objetivo táctil más cómodo para la lista de especialidades */
+  .spec-item { padding-block: 13px; }
 }
 
 @media (max-width: 520px) {
-  .spec-item       { padding: 10px 0 10px 18px; }
+  .spec-item       { padding: 11px 0 11px 18px; }
   .spec-item-name  { font-size: 0.875rem; }
   .spec-sec-eyebrow { margin-bottom: 28px; }
+}
+
+@media (max-width: 480px) {
+  .spec-left  { padding-inline: clamp(18px, 6vw, 24px); }
+  .spec-right { padding-inline: clamp(18px, 6vw, 24px); padding-bottom: 96px; }
+
+  .spec-detail-desc { line-height: 1.65; margin-bottom: 28px; }
+
+  .spec-cta {
+    width: 100%;
+    justify-content: center;
+    padding-block: 14px;
+  }
 }
