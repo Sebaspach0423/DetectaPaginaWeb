@@ -26,7 +26,7 @@
 
 .test-head h2 em {
   font-style: italic;
-  color: #FF8899;
+  color: #7FB0DA;
 }
 
 .test-head p {
@@ -56,7 +56,7 @@
 
 .test-card:hover {
   background: rgba(255,255,255,.07);
-  border-color: rgba(192,16,42,.30);
+  border-color: rgba(15,76,129,.40);
 }
 
 /* ---------- Quote mark ---------- */
@@ -91,7 +91,7 @@
 .test-avatar {
   width: 40px; height: 40px;
   border-radius: 50%;
-  background: var(--red);
+  background: var(--blue);
   display: flex;
   align-items: center;
   justify-content: center;

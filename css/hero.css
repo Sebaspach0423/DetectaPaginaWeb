@@ -47,7 +47,7 @@
 }
 
 .hero-content h1 em {
-  color: var(--red);
+  color: var(--blue);
   font-style: italic;
 }
 
@@ -102,7 +102,7 @@
   justify-content: center;
   width: 18px; height: 18px;
   border-radius: 50%;
-  background: var(--red);
+  background: var(--blue);
   color: #fff;
   font-size: .55rem;
   font-weight: 800;
@@ -137,9 +137,9 @@
 }
 
 .hero-social-btn:hover {
-  background: var(--red-light);
-  border-color: rgba(192,16,42,.25);
-  color: var(--red);
+  background: var(--blue-light);
+  border-color: rgba(15,76,129,.25);
+  color: var(--blue);
   transform: translateY(-2px);
 }
 
@@ -173,7 +173,7 @@
 .hero-scroll-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: var(--red);
+  background: var(--blue);
   margin-left: 1px;
 }
 

@@ -62,9 +62,9 @@
 }
 
 .footer-social:hover {
-  background: rgba(192,16,42,.5);
+  background: rgba(15,76,129,.55);
   color: #fff;
-  border-color: rgba(192,16,42,.6);
+  border-color: rgba(15,76,129,.65);
 }
 
 /* ---------- Column headings ---------- */
@@ -89,7 +89,7 @@
   transition: color var(--transition);
 }
 
-.footer-links a:hover { color: #FF8899; }
+.footer-links a:hover { color: #7FB0DA; }
 
 /* ---------- Contact items ---------- */
 .footer-contact-item {

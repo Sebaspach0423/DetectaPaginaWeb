@@ -3,7 +3,7 @@
    ============================================================ */
 
 .cta-sec {
-  background: var(--red);
+  background: var(--blue);
   padding-block: clamp(56px, 7vw, 88px);
 }
 
@@ -63,7 +63,7 @@
   align-items: center;
   gap: 10px;
   background: #fff;
-  color: var(--red);
+  color: var(--blue);
   padding: 15px 34px;
   border-radius: var(--r-btn);
   font-family: var(--sans);
@@ -75,7 +75,7 @@
 }
 
 .cta-btn-wa:hover {
-  background: var(--red-light);
+  background: var(--blue-light);
   transform: translateY(-2px);
   box-shadow: 0 12px 48px rgba(0,0,0,.22);
 }

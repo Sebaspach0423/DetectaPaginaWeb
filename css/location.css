@@ -41,7 +41,7 @@
 .loc-icon {
   width: 44px; height: 44px;
   border-radius: 12px;
-  background: var(--red-light);
+  background: var(--blue-light);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +65,7 @@
   display: inline-block;
   margin-top: 5px;
   font-size: .8125rem;
-  color: var(--red);
+  color: var(--blue);
   font-weight: 700;
   text-decoration: none;
   transition: opacity var(--transition);

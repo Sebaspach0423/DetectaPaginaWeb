@@ -2,42 +2,42 @@
    DATA — contenido estático de la landing page
    ============================================================ */
 
-const WA_URL = 'https://wa.me/51967990019?text=Hola%2C%20quisiera%20agendar%20una%20cita%20en%20Detecta%20Centro%20de%20Especialidades%20M%C3%A9dicas';
+const WA_URL = 'https://wa.me/51967990019?text=Hola%2C%20quisiera%20agendar%20una%20cita%20en%20Cl%C3%ADnica%20Coraz%C3%B3n%20de%20Le%C3%B3n';
 
 // ─── Diagnostic SVG icons (viewBox 0 0 24 24) ─────────────────
 const DIAG_ICONS = {
   endoscopia: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <circle cx="9" cy="9" r="5" stroke="#C0102A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M13 13L20 20" stroke="#C0102A" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="9" cy="9" r="2" fill="#C0102A"/>
+    <circle cx="9" cy="9" r="5" stroke="#0F4C81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M13 13L20 20" stroke="#0F4C81" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="9" cy="9" r="2" fill="#0F4C81"/>
   </svg>`,
   colonoscopia: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <path d="M4 14C4 8 8 7 12 7C16 7 16 12 16 14C16 19 19 19 21 18" stroke="#C0102A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4 14C4 8 8 7 12 7C16 7 16 12 16 14C16 19 19 19 21 18" stroke="#0F4C81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>`,
   ecografia: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <path d="M8 12C8.5 9 10 8 12 8C14 8 15.5 9 16 12" stroke="#C0102A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M5 12C6 6 9 4 12 4C15 4 18 6 19 12" stroke="#C0102A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="12" cy="15" r="2" fill="#C0102A"/>
+    <path d="M8 12C8.5 9 10 8 12 8C14 8 15.5 9 16 12" stroke="#0F4C81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5 12C6 6 9 4 12 4C15 4 18 6 19 12" stroke="#0F4C81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="15" r="2" fill="#0F4C81"/>
   </svg>`,
   doppler: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <path d="M2 8C4 5 4 11 6 13C8 15 8 9 10 11C12 13 12 17 14 17C16 17 16 13 18 14C20 15 20 18 22 18" stroke="#C0102A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2 8C4 5 4 11 6 13C8 15 8 9 10 11C12 13 12 17 14 17C16 17 16 13 18 14C20 15 20 18 22 18" stroke="#0F4C81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>`,
   ecg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <path d="M2 12H6L8 6L10 18L12 9L14 15L16 12H22" stroke="#C0102A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2 12H6L8 6L10 18L12 9L14 15L16 12H22" stroke="#0F4C81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>`,
   lab: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <path d="M9 3V12L5 19C4 21 5 22 7 22H17C19 22 20 21 19 19L15 12V3Z" stroke="#C0102A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M9 15C10.5 13.5 13.5 13.5 15 15" stroke="#C0102A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M9 3H15" stroke="#C0102A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 3V12L5 19C4 21 5 22 7 22H17C19 22 20 21 19 19L15 12V3Z" stroke="#0F4C81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 15C10.5 13.5 13.5 13.5 15 15" stroke="#0F4C81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 3H15" stroke="#0F4C81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>`,
   pap: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <circle cx="12" cy="12" r="7" stroke="#C0102A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M10 9V15M12 8V16M14 9V15" stroke="#C0102A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="12" r="7" stroke="#0F4C81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10 9V15M12 8V16M14 9V15" stroke="#0F4C81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>`,
   colpo: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-    <circle cx="10" cy="10" r="6" stroke="#C0102A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M15 15L21 21" stroke="#C0102A" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="10" cy="10" r="2.5" fill="#C0102A"/>
+    <circle cx="10" cy="10" r="6" stroke="#0F4C81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15 15L21 21" stroke="#0F4C81" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="10" cy="10" r="2.5" fill="#0F4C81"/>
   </svg>`,
 };
 
@@ -109,7 +109,7 @@ const diagnostics = [
   },
   {
     id: 'ecografia', n: 'Ecografía 3D/4D/5D', d: 'Imagen de última generación',
-    detail: 'Tecnología de imagen tridimensional en tiempo real para órganos abdominales, pélvicos y seguimiento del embarazo con visualización detallada del feto.',
+    detail: 'Ecografía 3D/4D/5D en Huánuco: imagen tridimensional en tiempo real para órganos abdominales, pélvicos y seguimiento del embarazo con visualización detallada del feto.',
     tags: ['Embarazo & órganos', 'Alta resolución']
   },
   {
@@ -149,7 +149,7 @@ const whyUs = [
 
 // ─── Testimonials ─────────────────────────────────────────────
 const testimonials = [
-  { n: 'María L.',  s: 'Gastroenterología', t: 'Me atendieron muy rápido y el diagnóstico fue preciso. Los especialistas son muy profesionales y el trato es excelente. Recomiendo Detecta al 100%.' },
+  { n: 'María L.',  s: 'Gastroenterología', t: 'Me atendieron muy rápido y el diagnóstico fue preciso. Los especialistas son muy profesionales y el trato es excelente. Recomiendo Clínica Corazón de León al 100%.' },
   { n: 'Carlos R.', s: 'Cardiología',       t: 'El cardiólogo me explicó todo con claridad. Me realizaron el ECG el mismo día y tuve los resultados en pocas horas. Una clínica de primer nivel en Huánuco.' },
   { n: 'Ana M.',    s: 'Ecografía 4D',      t: 'Las ecografías son de altísima calidad. Pude ver a mi bebé con mucho detalle. El personal es muy amable y profesional. ¡Excelente servicio!' },
 ];

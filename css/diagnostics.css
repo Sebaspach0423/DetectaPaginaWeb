@@ -31,9 +31,9 @@
   justify-content: space-between;
   background: linear-gradient(
     140deg,
-    #181818  0%,
-    #3a000e  55%,
-    #c0102a  100%
+    #10233a  0%,
+    #0F4C81  58%,
+    #C62828  100%
   );
   color: #fff;
   cursor: pointer;
@@ -48,7 +48,7 @@
 }
 
 .diag-card-3d:hover {
-  box-shadow: 0 20px 60px rgba(192,16,42,.32);
+  box-shadow: 0 20px 60px rgba(15,76,129,.34);
 }
 
 /* ─── Sección superior: icono + categoría ───────────────────── */
@@ -82,8 +82,8 @@
   fill: none;
 }
 
-.diag-card-icon svg circle[fill="#C0102A"],
-.diag-card-icon svg path[fill="#C0102A"] {
+.diag-card-icon svg circle[fill="#0F4C81"],
+.diag-card-icon svg path[fill="#0F4C81"] {
   fill: rgba(255,255,255,.88) !important;
   stroke: none !important;
 }
@@ -155,7 +155,7 @@
 .diag-progress-fill {
   height: 100%;
   width: 0%;
-  background: var(--red);
+  background: var(--blue);
   border-radius: 3px;
   /* la transición se aplica desde JS */
 }
@@ -181,7 +181,7 @@
 }
 
 .diag-dot.active {
-  background: var(--red);
+  background: var(--blue);
   width: 26px;
 }
 

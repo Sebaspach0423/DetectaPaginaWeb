@@ -24,7 +24,7 @@
 
 .why-head-left h2 em {
   font-style: italic;
-  color: var(--red);
+  color: var(--blue);
 }
 
 .why-head-right {
@@ -51,8 +51,8 @@
 }
 
 .why-card:hover {
-  border-color: var(--red);
-  box-shadow: 0 6px 28px rgba(192,16,42,.09);
+  border-color: var(--blue);
+  box-shadow: 0 6px 28px rgba(15,76,129,.09);
   transform: translateY(-3px);
 }
 
@@ -70,7 +70,7 @@
 /* ---------- Red bar ---------- */
 .why-bar {
   width: 28px; height: 3px;
-  background: var(--red);
+  background: var(--blue);
   border-radius: 2px;
   margin-bottom: 18px;
 }
