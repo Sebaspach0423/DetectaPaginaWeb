@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://detecta-pagina-web.vercel.app/sitemap.xml
+Sitemap: https://corazon-de-leon.vercel.app/sitemap.xml
